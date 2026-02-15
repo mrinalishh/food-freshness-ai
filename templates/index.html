@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FreshCheck – AI Food Analyzer</title>
+
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,#667eea,#764ba2);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            margin:0;
+        }
+
+        .card{
+            background:white;
+            padding:30px;
+            width:380px;
+            border-radius:12px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.2);
+            text-align:center;
+        }
+
+        h1{
+            margin-bottom:10px;
+        }
+
+        input{
+            margin:15px 0;
+        }
+
+        button{
+            background:#764ba2;
+            color:white;
+            border:none;
+            padding:10px 20px;
+            border-radius:6px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            opacity:0.9;
+        }
+
+        .result{
+            margin-top:20px;
+            font-size:18px;
+            font-weight:bold;
+        }
+
+        img{
+            width:100%;
+            margin-top:15px;
+            border-radius:10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>🥗 Food Quality AI</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" required>
+            <br>
+            <button type="submit">Analyze</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result">{{ prediction }}</div>
+            <img src="{{ url_for('static', filename='uploaded.jpg') }}">
+        {% endif %}
+    </div>
+</body>
+</html>
